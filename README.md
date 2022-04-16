@@ -13,7 +13,7 @@ git remote add origin https://github.com/alexdthi/Hackathon.git
 
 to add specific file
 
-git add <filename>
+git add \<filename\>
   
 or to add all files
   
