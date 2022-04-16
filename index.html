@@ -6,10 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Running Routes</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="./index.js"></script>
 </head>
 <body>
     <h1>Welcome to Running Routes</h1>
-    <p>Please enter in your location to the textbox below, or press the locate me button to allow the browser to access your location.</p>
-    <input type="text" placeholder="Your Location">
+    <p>Enter in your location to the textbox below, or press the locate me button to allow the browser to access your location.</p>
+    <div id='searchBoxContainer'>
+        <input type='text' id='searchBox' placeholder="Your location"/>
+        <button id="locateUser" onclick="getUserLocation()">Locate Me</button>
+    </div>
+    <p>Enter in a number for the distance you want to run and select a unit in the boxes below.</p>
+    <div id="textBoxContainer">
+        <input type="number" placeholder="Distance" id="distance">
+        <select id="unit">
+            <option value="mi">Miles</option>
+            <option value="km">Kilometers</option>
+        </select>
+    </div>
+    <div id="map"></div>
+    
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Am8ryQPYHCOfmbeh9Uk6tulI8N1xFN-Ab9DRLdmRbDtaJ8SFj1U00pU5LW9xzzac' async defer></script>
 </body>
 </html>
