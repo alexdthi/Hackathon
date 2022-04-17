@@ -1,6 +1,6 @@
 import sys; args=sys.argv[1:]
 from math import pi, acos, sin, cos
-beginningLat, beginningLong = args[0], args[1]
+beginningLat, beginningLong = float(args[0]), float(args[1])
 goalDist = float(args[2])
 
 # locations: (some sort of identifying name) (latitude) (longitude) ; txt file gabby style
@@ -33,8 +33,8 @@ def distEstimate(s1, s2):
     x2 = s2[1]*pi/180.0
     return acos(sin(y1)*sin(y2) + cos(y1)*cos(y2)*cos(x2-x1)) * r #law of cosines
 
-def neighbors(l):
-    return edges[l]
+def neighbors(l): #takes in name, NOT coords
+    return edges[l] #returns names of edges and distance
 
 def bdbfs(start):
     parseStart = [(start, 0)] #the start
@@ -46,21 +46,23 @@ def bdbfs(start):
         for i,dist in neighbors(sliderStart): #forwards direction bfs
             if(dictSeen1.get(i) is None): #not in dictionary
                 dictSeen1[i]=(sliderStart,d+dist)
-                parseStart.append(i) #check if neighbors are in dictseen2
-            if i in dictSeen2 and dictSeen1[i][1]+dictSeen2[i][1]>=goalDist-0.2: #if the key was already found in the other dictionary
-                return path(dictSeen1,i) + path(dictSeen2,i)[::-1]
+                parseStart.append((i, d+dist)) #check if neighbors are in dictseen2
+                parseStart.sort()
+            if i in dictSeen2 and dictSeen1[i][1]+dictSeen2[i][1]>=goalDist-0.5: #if the key was already found in the other dictionary
+                return path(dictSeen1,i) + [i] + path(dictSeen2,i)[::-1]
         sliderGoal, d = parseGoal.pop(0)
         for i,dist in neighbors(sliderGoal): #reverse direction bfs
             if(dictSeen2.get(i) is None): #not in dictionary
                 dictSeen2[i]=(sliderGoal,d+dist)
-                parseGoal.append(i)
-            if i in dictSeen1 and dictSeen1[i][1]+dictSeen2[i][1]>=goalDist-0.2: #if the key was already found in the other dictionary
-                return path(dictSeen1,i) + path(dictSeen2,i)[::-1]
+                parseGoal.append((i, d+dist))
+                parseGoal.sort()
+            if i in dictSeen1 and dictSeen1[i][1]+dictSeen2[i][1]>=goalDist-0.5: #if the key was already found in the other dictionary
+                return path(dictSeen1,start,i) + [i] + path(dictSeen2,start,i)[::-1]
 
-def path(dictSeen, start, end):
+def path(dictSeen, st, end):
     toRet = []
     p = end
-    while p!=start:
+    while p!=st:
         p = dictSeen[p][0]
         toRet.append(p)
     return toRet[::-1]
@@ -68,9 +70,9 @@ def path(dictSeen, start, end):
 def nearestPoint(lat, long):
     distlist = []
     for x,y in reverseLocs:
-        distlist.append((distEstimate((lat,long), (x,y)), reverseLocs(x,y)))
+        distlist.append((distEstimate((lat,long), (x,y)), reverseLocs[(x,y)]))
     return min(distlist)[1]
 
 beginning = nearestPoint(beginningLat, beginningLong)
-start = locations[beginning]
+start = beginning
 print(f'Path: {bdbfs(start)}')
