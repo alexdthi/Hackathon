@@ -8,8 +8,8 @@ goalDist = float(args[2])
 # street 1 alphabetically ahead of street 2
 # edges: (intersection1) (intersection2) (distance) ; txt file
 
-rawLoc = open('rrNodes.txt', 'r').read().splitlines() ## change this to read the json file
-rawEdges = open('edges.txt', 'r').read().splitlines() ## same as above
+rawLoc = open('intersectionLocations.txt', 'r').read().splitlines() ## change this to read the json file
+rawEdges = open('intersectionNeighbors.txt', 'r').read().splitlines() ## same as above
 locations = {} #get (lat, long) of an intersection
 reverseLocs = {}
 edges = {} #get the set of nearest intersections in each direction
