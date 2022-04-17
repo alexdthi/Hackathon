@@ -1,30 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Running Routes</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./index.js"></script>
-</head>
-<body>
-    <h1>Welcome to Running Routes</h1>
-    <p>Enter in your location to the textbox below, or press the locate me button to allow the browser to access your location.</p>
-    <div id='searchBoxContainer'>
-        <input type='text' id='searchBox' placeholder="Your location"/>
-        <button id="locateUser" onclick="getUserLocation()">Locate Me</button>
-    </div>
-    <p>Enter in a number for the distance you want to run and select a unit in the boxes below.</p>
-    <div id="textBoxContainer">
-        <input type="number" placeholder="Distance" id="distance">
-        <select id="unit">
-            <option value="mi">Miles</option>
-            <option value="km">Kilometers</option>
-        </select>
-    </div>
-    <div id="map"></div>
-    
-    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Am8ryQPYHCOfmbeh9Uk6tulI8N1xFN-Ab9DRLdmRbDtaJ8SFj1U00pU5LW9xzzac' async defer></script>
-</body>
-</html>
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Login Page </title>  
+<style>   
+    body {  
+    font-family: Calibri, Helvetica, sans-serif; 
+    background-image: url("runners.png");
+    background-color: #cccccc;
+    background:"runners.png";
+    }  
+
+    button {   
+        background-color: #4CAF50;   
+        width: 100%;  
+        color: orange;   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+    }   
+
+    form {   
+        border: 3px solid #f1f1f1;   
+    }   
+
+    input[type=text], input[type=password] {   
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        border: 2px solid green;   
+        box-sizing: border-box;   
+    }
+
+    button:hover {   
+        opacity: 0.7;   
+    }   
+
+    .container {   
+        padding: 25px;   
+        background-color: lightblue;  
+    }   
+
+    #caption {
+        margin:5px;
+    }
+</style>   
+</head>    
+<body>    
+    <FONT COLOR="#FFC000 "> 
+    <h1><center>Running Routes</center></h1>
+    <FONT COLOR="#000000"> 
+    <form action='./runningroutes.html'>
+        <div class="container">
+            <label>Username : </label>
+            <input type="text" placeholder="Enter Username" name="username" id="username" required>  
+            <label>Password : </label>
+            <input type="password" placeholder="Enter Password" name="password" id="password" required>  
+            <button type="submit">Login</button>
+            <p id="caption">
+                <input type="checkbox" checked="checked"> Remember Me
+                <br>
+                Forgot <a href="#"> password?</a>
+            </p>
+        </div>      
+    </form>     
+</body>     
+</html>  

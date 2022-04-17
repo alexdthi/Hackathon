@@ -20,7 +20,6 @@ p {
     height: 600px;
     margin: 3px;
     margin-left: 10px;
-    margin-top: 20px;
 }
 
 #searchBox {
@@ -52,4 +51,9 @@ p {
 
 #textBoxContainer {
     margin-left: 10px;
+}
+
+#submit {
+    margin: 10px;
+    margin-bottom: 0px;
 }
