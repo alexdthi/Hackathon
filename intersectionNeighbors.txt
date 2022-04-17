@@ -5,7 +5,6 @@ brafai bramon 0.149
 gramon grarid 0.504
 brarid grarid 0.476
 bramon gramon 0.132
-brafai bramon 0.150
 gramon mon8th 0.439
 fai8th mon8th 0.136
 faimar fai8th 0.161
